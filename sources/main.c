@@ -11,6 +11,7 @@ int main(int argc, char ** argv) {
     char c;
     char* string;
     bool result;
+    LIST* list;
 
     do {
         printf("Commande ? ");
@@ -57,7 +58,8 @@ int main(int argc, char ** argv) {
                 break;
 
             case 'c' :
-                printf("%s\n", "not implemented yet");
+                list = readDicoFromFile("./dico/dico.fr");
+                displayList(list);
                 break;
 
             case 'd' :

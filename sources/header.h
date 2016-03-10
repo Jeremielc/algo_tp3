@@ -16,6 +16,14 @@ typedef struct {
     struct NODE* brother;
 } NODE;
 
+//functions.c
 void flush();
 NODE* insertion(NODE*, char*);
+LIST* readDicoFromFile();
 bool search_word(NODE*, char*);
+
+//lists.c
+void add(LIST*, char*);
+LIST* createList();
+void deleteList(LIST*);
+void displayList(LIST*);

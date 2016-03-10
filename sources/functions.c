@@ -32,6 +32,25 @@ void flush() {
     } while (c != NULL && c != '\n');
 }
 
+LIST* readDicoFromFile(char* path) {
+	FILE* canal;
+	canal = fopen(path, "rt");
+
+	LIST* list = createList();
+	char* string = (char*) calloc(30, sizeof(char));
+
+	while(!feof(canal)) {
+		fscanf(canal, "%s", string);
+		add(list, string);
+	}
+
+	fclose(canal);
+	printf("%s\n", "Fichier lu !");
+
+	displayList(list);
+	return list;
+}
+
 bool search_word(NODE* p, char* w) {
     if(p == NULL || w == NULL) {
         return false;
