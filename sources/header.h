@@ -6,6 +6,11 @@
 #include <stdbool.h>
 
 typedef struct {
+    char* value;
+    struct LIST* next;
+} LIST;
+
+typedef struct {
     char value;
     struct NODE* son;
     struct NODE* brother;
