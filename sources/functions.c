@@ -69,7 +69,3 @@ bool search_word(NODE* p, char* w) {
 
     return false;
 }
-
-void fonction_bidon() {
-	return 1;
-}
