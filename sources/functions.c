@@ -3,6 +3,27 @@
 
 #include "header.h"
 
+void displayTree(NODE* summit) {
+	NODE* psummit = summit;
+
+	do {
+		printf("%s\t", summit->value);
+		psummit = summit->brother;
+	} while (hasBrother(psummit));
+}
+
+bool hasBrother(NODE* node) {
+	if (node == NULL) {
+		return false;
+	} else {
+		if (node->brother == NULL) {
+			return false;
+		} else if (node->brother != NULL) {
+			return true;
+		}
+	}
+}
+
 NODE* insertion(NODE* tree, char* string) {
 	if (tree == NULL){                                                          //Dans le cas où il n'y a plus de branche
 		tree = (NODE *) calloc(1, sizeof(NODE));                                //On alloue de la mémoire
@@ -32,23 +53,37 @@ void flush() {
     } while (c != NULL && c != '\n');
 }
 
-LIST* readDicoFromFile(char* path) {
+/*LIST* readDicoFromFile(char* path) {
 	FILE* canal;
 	canal = fopen(path, "rt");
 
 	LIST* list = createList();
+	LIST* plist = list;
 	char* string = (char*) calloc(30, sizeof(char));
 
 	while(!feof(canal)) {
 		fscanf(canal, "%s", string);
-		add(list, string);
+		plist = add(plist, string);
 	}
 
 	fclose(canal);
 	printf("%s\n", "Fichier lu !");
 
-	displayList(list);
 	return list;
+}*/
+
+void readDicoFromFile(char* path, NODE* summit) {
+	FILE* canal;
+	canal = fopen(path, "rt");
+
+	char* string = (char*) calloc(30, sizeof(char));
+
+	while(!feof(canal)) {
+		fscanf(canal, "%s", string);
+		insertion(summit, string);
+	}
+
+	fclose(canal);
 }
 
 bool search_word(NODE* p, char* w) {

@@ -17,13 +17,16 @@ typedef struct {
 } NODE;
 
 //functions.c
+void displayTree(NODE*);
 void flush();
+bool hasBrother(NODE*);
 NODE* insertion(NODE*, char*);
-LIST* readDicoFromFile();
+//LIST* readDicoFromFile();
+void readDicoFromFile(char*, NODE*);
 bool search_word(NODE*, char*);
 
 //lists.c
-void add(LIST*, char*);
+LIST* add(LIST*, char*);
 LIST* createList();
 void deleteList(LIST*);
 void displayList(LIST*);

@@ -29,7 +29,7 @@ int main(int argc, char ** argv) {
                 break;
 
             case 'a' :
-                printf("%s\n", "not implemented yet");
+                displayTree(&summit);
                 break;
 
             case 'r' :
@@ -58,8 +58,7 @@ int main(int argc, char ** argv) {
                 break;
 
             case 'c' :
-                list = readDicoFromFile("./dico/dico.fr");
-                displayList(list);
+                readDicoFromFile("./dico/dico.fr", &summit);
                 break;
 
             case 'd' :

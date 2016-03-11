@@ -3,19 +3,13 @@
 
 #include "header.h"
 
-void add(LIST* list, char* elementToAdd) {
+LIST* add(LIST* list, char* elementToAdd) {
     LIST* new = createList();
     new->value = elementToAdd;
 
-    if (list->next == NULL) {
-        list->next = new;
-    } else {
-        while (list->next != NULL) {
-            list = list->next;
-        }
+    list->next = new;
 
-        list->next = new;
-    }
+    return new;
 }
 
 LIST* createList() {
@@ -27,7 +21,9 @@ LIST* createList() {
 }
 
 void deleteList(LIST* list) {
-    free(list->value);
+    if (list->value != NULL) {
+        free(list->value);
+    }
 
     if (list->next != NULL) {
         deleteList(list->next);
@@ -37,10 +33,12 @@ void deleteList(LIST* list) {
 }
 
 void displayList(LIST* list) {
-    while (list->next != NULL) {
-        if (list->value != NULL) {
-            printf("%s\n", list->value);
-        }
-        list = list->next;
+    if (list == NULL) {
+        return;
     }
+    
+    do {
+        printf("%s\n", list->value);
+        list = list->next;
+    }while (list != NULL);
 }
