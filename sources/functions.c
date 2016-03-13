@@ -1,6 +1,5 @@
 /*functions.c*/
 //Jérémie Leclerc & Pierrick Hue
-
 #include "headers/header.h"
 
 void displayTree(NODE* summit) {
