@@ -1,32 +1,21 @@
 /*functions.c*/
 //Jérémie Leclerc & Pierrick Hue
+
 #include "headers/header.h"
 
-void displayTree(NODE* summit) {
-    NODE* psummit = summit;
+void displayTree(NODE* summit, int depth, char* root) {
+    root[depth] = summit->value;
+    if (root[depth] == '\0') {
+        printf("%s\n", root);
+    }
 
-    do {
-        printf("%c\t", summit->value);
-        psummit = summit->brother;
-    } while (hasBrother(psummit));
-}
+    if (summit != NULL) {
+        if (summit->son != NULL) {
+            displayTree(summit->son, depth + 1, root);
+        }
 
-void flush() {
-    char c;
-    
-    do {
-        c = getchar();
-    } while (c != '\n');
-}
-
-bool hasBrother(NODE* node) {
-    if (node == NULL) {
-        return false;
-    } else {
-        if (node->brother == NULL) {
-            return false;
-        } else if (node->brother != NULL) {
-            return true;
+        if (summit->brother != NULL) {
+            displayTree(summit->brother, depth, root);
         }
     }
 }

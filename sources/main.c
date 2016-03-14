@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
     summit.brother = NULL;
 
     char c;
-    char* string;
+    char* string = (char*) calloc(30, sizeof(char));
     bool result = false;
     bool init = false;
     LIST* list;
@@ -28,7 +28,8 @@ int main(int argc, char ** argv) {
 
             case 'a':
                 if (init) {
-                    displayTree(&summit);
+                    displayTree(&summit, 0, string);
+                    system("sleep 20s");
                 }
                 break;
 
@@ -49,10 +50,10 @@ int main(int argc, char ** argv) {
                 break;
 
             case 'i':
-                string = (char*) calloc(26, sizeof (char));
                 printf("Entrez une chaine de caractère : ");
                 scanf("%s", string);
                 insertion(&summit, string);
+                init = true;
                 break;
 
             case 's':
@@ -63,6 +64,7 @@ int main(int argc, char ** argv) {
 
             case 'c':
                 readDicoFromFile("./dico/dico.fr", &summit);
+                init = true;
                 break;
 
             case 'd':
@@ -71,6 +73,7 @@ int main(int argc, char ** argv) {
 
             case 'q':
                 exit(0);
+                free(string);
                 break;
 
             default:
