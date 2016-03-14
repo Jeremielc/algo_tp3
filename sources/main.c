@@ -53,6 +53,7 @@ int main(int argc, char ** argv) {
                 break;
             case 's':
                 if (init) {
+                    printf("%s\n", "Not implemented yet");
                     //il faut rechercher le mot pour le supprimer.
                     //ensuite on supprime les fils puis on raccorde la racine
                     //du mot aux frere des mots suivants.
