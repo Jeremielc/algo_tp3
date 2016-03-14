@@ -17,8 +17,8 @@ int main(int argc, char ** argv) {
     do {
         printf("Commande ? ");
         c = getchar();
-        switch(c) {
-            case 'h' :
+        switch (c) {
+            case 'h':
                 printf("\nAide : \n");
                 printf("a : Affichage des mots de l'arbre par ordre alphabétique \n");
                 printf("r : Recherche d'un mot \n");
@@ -29,11 +29,11 @@ int main(int argc, char ** argv) {
                 printf("q : Quitter \n");
                 break;
 
-            case 'a' :
+            case 'a':
                 displayTree(&summit);
                 break;
 
-            case 'r' :
+            case 'r':
                 result = false;
                 printf("%s\n", "Que voulez vous rechercher ? ");
                 scanf("%s", string);
@@ -47,30 +47,30 @@ int main(int argc, char ** argv) {
                 }
                 break;
 
-            case 'i' :
-                string = (char*) calloc (26, sizeof(char));
+            case 'i':
+                string = (char*) calloc(26, sizeof (char));
                 printf("Entrez une chaine de caractère : ");
                 scanf("%s", string);
                 insertion(&summit, string);
                 break;
 
-            case 's' :
+            case 's':
                 printf("%s\n", "not implemented yet");
                 break;
 
-            case 'c' :
+            case 'c':
                 readDicoFromFile("./dico/dico.fr", &summit);
                 break;
 
-            case 'd' :
+            case 'd':
                 printf("%s\n", "not implemented yet");
                 break;
 
-            case 'q' :
+            case 'q':
                 exit(0);
                 break;
 
-            default :
+            default:
                 printf("%s\n", "Use menu commands.");
                 break;
         }

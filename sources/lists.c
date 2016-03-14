@@ -13,8 +13,8 @@ LIST* add(LIST* list, char* elementToAdd) {
 }
 
 LIST* createList() {
-    LIST* list = (LIST*) calloc(1, sizeof(LIST));
-    list->value = (char*) calloc(30, sizeof(char));
+    LIST* list = (LIST*) calloc(1, sizeof (LIST));
+    list->value = (char*) calloc(30, sizeof (char));
     list->next = NULL;
 
     return list;
@@ -36,9 +36,9 @@ void displayList(LIST* list) {
     if (list == NULL) {
         return;
     }
-    
+
     do {
         printf("%s\n", list->value);
         list = list->next;
-    }while (list != NULL);
+    } while (list != NULL);
 }
