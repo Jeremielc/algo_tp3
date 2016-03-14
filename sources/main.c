@@ -11,30 +11,28 @@ int main(int argc, char ** argv) {
 
     char c;
     char* string;
-    bool result;
+    bool result = false;
+    bool init = false;
     LIST* list;
 
     do {
+        displayMenu();
         printf("Commande ? ");
         c = getchar();
+        
         switch (c) {
             case 'h':
                 printf("\nAide : \n");
-                printf("a : Affichage des mots de l'arbre par ordre alphabétique \n");
-                printf("r : Recherche d'un mot \n");
-                printf("i : Insertion d'un mot \n");
-                printf("s : Suppression d'un mot \n");
-                printf("c : Chargement d'un fichier \n");
-                printf("d : Destruction de l'arbre \n");
-                printf("q : Quitter \n");
+                displayMenu();
                 break;
 
             case 'a':
-                displayTree(&summit);
+                if (init) {
+                    displayTree(&summit);
+                }
                 break;
 
             case 'r':
-                result = false;
                 printf("%s\n", "Que voulez vous rechercher ? ");
                 scanf("%s", string);
 
@@ -45,6 +43,9 @@ int main(int argc, char ** argv) {
                 } else {
                     printf("%s\n", "Le mot n'est pas présent.");
                 }
+                
+                system("sleep 2s");
+                
                 break;
 
             case 'i':
@@ -55,7 +56,9 @@ int main(int argc, char ** argv) {
                 break;
 
             case 's':
-                printf("%s\n", "not implemented yet");
+                if (init) {
+                    printf("%s\n", "not implemented yet");
+                }
                 break;
 
             case 'c':
@@ -76,8 +79,18 @@ int main(int argc, char ** argv) {
         }
 
         printf("\n");
-        c = getchar();
     } while (1);
 
-    return 0;
+    return EXIT_SUCCESS;
+}
+
+void displayMenu() {
+    system("clear");
+    printf("a : Affichage des mots de l'arbre par ordre alphabétique \n");
+    printf("r : Recherche d'un mot \n");
+    printf("i : Insertion d'un mot \n");
+    printf("s : Suppression d'un mot \n");
+    printf("c : Chargement d'un fichier \n");
+    printf("d : Destruction de l'arbre \n");
+    printf("q : Quitter \n");
 }

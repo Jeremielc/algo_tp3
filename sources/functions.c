@@ -6,9 +6,17 @@ void displayTree(NODE* summit) {
     NODE* psummit = summit;
 
     do {
-        printf("%d\t", summit->value);
+        printf("%c\t", summit->value);
         psummit = summit->brother;
     } while (hasBrother(psummit));
+}
+
+void flush() {
+    char c;
+    
+    do {
+        c = getchar();
+    } while (c != '\n');
 }
 
 bool hasBrother(NODE* node) {
@@ -44,25 +52,6 @@ NODE* insertion(NODE* tree, char* string) {
 
     return tree;
 }
-
-/*LIST* readDicoFromFile(char* path) {
-        FILE* canal;
-        canal = fopen(path, "rt");
-
-        LIST* list = createList();
-        LIST* plist = list;
-        char* string = (char*) calloc(30, sizeof(char));
-
-        while(!feof(canal)) {
-                fscanf(canal, "%s", string);
-                plist = add(plist, string);
-        }
-
-        fclose(canal);
-        printf("%s\n", "Fichier lu !");
-
-        return list;
-}*/
 
 void readDicoFromFile(char* path, NODE* summit) {
     FILE* canal;

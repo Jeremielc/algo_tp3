@@ -19,8 +19,12 @@ typedef struct NODE{
     struct NODE* brother;
 } NODE;
 
+//main.c
+void displayMenu();
+
 //functions.c
 void displayTree(NODE*);
+void flush();
 bool hasBrother(NODE*);
 NODE* insertion(NODE*, char*);
 void readDicoFromFile(char*, NODE*);
