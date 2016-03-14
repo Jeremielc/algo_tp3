@@ -3,6 +3,22 @@
 
 #include "headers/header.h"
 
+void destroyTree(NODE* summit) {
+    if (summit == NULL) {
+        return;
+    } else {
+        if (summit->son != NULL) {
+            destroyTree(summit->son);
+            free(summit->son);
+        }
+        
+        if (summit->brother != NULL) {
+            destroyTree(summit->brother);
+            free(summit->brother);
+        }
+    }
+}
+
 void displayTree(NODE* summit, int depth, char* root) {
     root[depth] = summit->value;
     if (root[depth] == '\0') {

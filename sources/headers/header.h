@@ -23,6 +23,7 @@ typedef struct NODE{
 void displayMenu();
 
 //functions.c
+void destroyTree(NODE*);
 void displayTree(NODE*, int, char*);
 bool hasBrother(NODE*);
 NODE* insertion(NODE*, char*);

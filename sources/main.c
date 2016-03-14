@@ -10,7 +10,7 @@ int main(int argc, char ** argv) {
     summit.brother = NULL;
 
     char c;
-    char* string = (char*) calloc(30, sizeof(char));
+    char* string = (char*) calloc(30, sizeof (char));
     bool result = false;
     bool init = false;
     LIST* list;
@@ -19,20 +19,18 @@ int main(int argc, char ** argv) {
         displayMenu();
         printf("Commande ? ");
         c = getchar();
-        
+
         switch (c) {
             case 'h':
                 printf("\nAide : \n");
                 displayMenu();
                 break;
-
             case 'a':
                 if (init) {
                     displayTree(&summit, 0, string);
                     system("sleep 20s");
                 }
                 break;
-
             case 'r':
                 printf("%s\n", "Que voulez vous rechercher ? ");
                 scanf("%s", string);
@@ -44,38 +42,32 @@ int main(int argc, char ** argv) {
                 } else {
                     printf("%s\n", "Le mot n'est pas présent.");
                 }
-                
-                system("sleep 2s");
-                
-                break;
 
+                system("sleep 2s");
+
+                break;
             case 'i':
                 printf("Entrez une chaine de caractère : ");
                 scanf("%s", string);
                 insertion(&summit, string);
                 init = true;
                 break;
-
             case 's':
                 if (init) {
                     printf("%s\n", "not implemented yet");
                 }
                 break;
-
             case 'c':
                 readDicoFromFile("./dico/dico.fr", &summit);
                 init = true;
                 break;
-
             case 'd':
-                printf("%s\n", "not implemented yet");
+                destroyTree(&summit);
                 break;
-
             case 'q':
                 exit(0);
                 free(string);
                 break;
-
             default:
                 printf("%s\n", "Use menu commands.");
                 break;
