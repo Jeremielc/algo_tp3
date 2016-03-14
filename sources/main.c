@@ -28,7 +28,7 @@ int main(int argc, char ** argv) {
             case 'a':
                 if (init) {
                     displayTree(&summit, 0, string);
-                    system("sleep 20s");
+                    system("sleep 10s");
                 }
                 break;
             case 'r':
@@ -44,7 +44,6 @@ int main(int argc, char ** argv) {
                 }
 
                 system("sleep 2s");
-
                 break;
             case 'i':
                 printf("Entrez une chaine de caractère : ");
@@ -54,7 +53,9 @@ int main(int argc, char ** argv) {
                 break;
             case 's':
                 if (init) {
-                    printf("%s\n", "not implemented yet");
+                    //il faut rechercher le mot pour le supprimer.
+                    //ensuite on supprime les fils puis on raccorde la racine
+                    //du mot aux frere des mots suivants.
                 }
                 break;
             case 'c':
@@ -63,6 +64,7 @@ int main(int argc, char ** argv) {
                 break;
             case 'd':
                 destroyTree(&summit);
+                summit.value = '\0';
                 break;
             case 'q':
                 exit(0);
