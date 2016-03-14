@@ -6,7 +6,6 @@
 LIST* add(LIST* list, char* elementToAdd) {
     LIST* new = createList();
     new->value = elementToAdd;
-
     list->next = new;
 
     return new;

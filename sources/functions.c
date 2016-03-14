@@ -37,10 +37,10 @@ void displayTree(NODE* summit, int depth, char* root) {
 }
 
 NODE* insertion(NODE* tree, char* string) {
-    if (tree == NULL) { //Dans le cas où il n'y a plus de branche
-        tree = (NODE *) calloc(1, sizeof (NODE)); //On alloue de la mémoire
+    if (tree == NULL) {                             //Dans le cas où il n'y a plus de branche
+        tree = (NODE *) calloc(1, sizeof (NODE));   //On alloue de la mémoire
 
-        tree->value = *string; //La valeur de string est affectee a tree
+        tree->value = *string;                      //La valeur de string est affectee a tree
         tree->son = NULL;
         tree->brother = NULL;
 
@@ -48,9 +48,9 @@ NODE* insertion(NODE* tree, char* string) {
             tree->son = insertion(tree->son, string + 1);
         }
     } else {
-        if (tree->value == *string) { //La première valeur du mot coincide avec celle du dictionnaire.
+        if (tree->value == *string) {               //La première valeur du mot coincide avec celle du dictionnaire.
             tree->son = insertion(tree->son, string + 1);
-        } else { //La première valeur ne coincide pas
+        } else {                                    //La première valeur ne coincide pas
             tree->brother = insertion(tree->brother, string);
         }
     }
@@ -72,20 +72,21 @@ void readDicoFromFile(char* path, NODE* summit) {
     fclose(canal);
 }
 
-bool search_word(NODE* p, char* w) {
-    if (p == NULL || w == NULL) {
+bool search_word(NODE* summit, char* string) {
+    if (summit == NULL || string == NULL) {
         return false;
     }
-
-    // Pour chaque noeud
-    for (; p != NULL; p = p->brother) {
-        if (*w == '\0' && p->value == '\0') {
+    
+    while (summit != NULL) {
+        if (*string == '\0' && summit->value == '\0') {
             return true;
         }
 
-        if (p->value == *w) {
-            return search_word(p->son, w + 1);
+        if (summit->value == *string) {
+            return search_word(summit->son, string + 1);
         }
+        
+        summit = summit->brother;
     }
 
     return false;
