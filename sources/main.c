@@ -11,6 +11,7 @@ int main(int argc, char ** argv) {
 
     char c;
     char* string = (char*) calloc(30, sizeof (char));
+    char* dicoName = (char*) calloc(30, sizeof (char));
     bool result = false;
     bool init = false;
     LIST* list;
@@ -60,7 +61,11 @@ int main(int argc, char ** argv) {
                 }
                 break;
             case 'c':
-                readDicoFromFile("./dico/dico.fr", &summit);
+                printf("\nNom du dico : ");
+                scanf("%s", string);
+                sprintf(dicoName, "./dico/%s", string);
+                //readDicoFromFile("./dico/dico.fr", &summit);
+                readDicoFromFile(dicoName, &summit);
                 init = true;
                 break;
             case 'd':
@@ -70,6 +75,7 @@ int main(int argc, char ** argv) {
             case 'q':
                 exit(0);
                 free(string);
+                free(dicoName);
                 break;
             default:
                 printf("%s\n", "Use menu commands.");
