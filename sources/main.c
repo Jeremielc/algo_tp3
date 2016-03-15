@@ -12,6 +12,7 @@ int main(int argc, char ** argv) {
     char c;
     char* string = (char*) calloc(30, sizeof (char));
     char* dicoName = (char*) calloc(30, sizeof (char));
+    char* display = (char*) calloc(30, sizeof (char));
     bool result = false;
     bool init = false;
     LIST* list;
@@ -28,7 +29,7 @@ int main(int argc, char ** argv) {
                 break;
             case 'a':
                 if (init) {
-                    displayTree(&summit, 0, string);
+                    displayTree(&summit, 0, display);
                     system("sleep 10s");
                 }
                 break;
@@ -63,7 +64,7 @@ int main(int argc, char ** argv) {
             case 'c':
                 printf("\nNom du dico : ");
                 scanf("%s", string);
-                sprintf(dicoName, "./dico/%s", string);
+                sprintf(dicoName, "./dico/%s", string);     //Attention, si le nom du dictionnaire contient plus de 23 caractères : seg fault.
                 //readDicoFromFile("./dico/dico.fr", &summit);
                 readDicoFromFile(dicoName, &summit);
                 init = true;
@@ -76,6 +77,7 @@ int main(int argc, char ** argv) {
                 exit(0);
                 free(string);
                 free(dicoName);
+                free(display);
                 break;
             default:
                 printf("%s\n", "Use menu commands.");
